@@ -42,15 +42,7 @@ x_=[".","0","1","2","3","4","5","6","7","8","9"]
 
 
 
-# def draw_label(im, label, x, y):
-#     """Draw text onto image at location."""
-#     # Get text size.
-#     text_size = cv2.getTextSize(label, FONT_FACE, FONT_SCALE, THICKNESS)
-#     dim, baseline = text_size[0], text_size[1]
-#     # Use text size to create a BLACK rectangle.
-#     cv2.rectangle(im, (x,y), (x + dim[0], y + dim[1] + baseline), (0,0,0), cv2.FILLED);
-#     # Display text inside the rectangle.
-#     cv2.putText(im, label, (x, y + dim[1]), FONT_FACE, FONT_SCALE, YELLOW, THICKNESS, cv2.LINE_AA)
+
 def pre_process(input_image, net,w,h):
       # Create a 4D blob from a frame.
       #print(input_image.shape)
@@ -111,7 +103,7 @@ def get_xyxy(input_image,image_height,image_width, outputs,w,h):
             boxes[i][3]=top + height
             #check if the height is suitable
             output_boxes.append(boxes[i])
-      cv2.imwrite('x1.jpg',input_image)
+      # cv2.imwrite('x1.jpg',input_image)
       return output_boxes,results_cls_id #boxes (left,top,width,height)
 
 def char_det(input_image,ch_detection_model,w,h):
@@ -120,11 +112,7 @@ def char_det(input_image,ch_detection_model,w,h):
       image_height=input_image.shape[0]
       image_width=input_image.shape[1]
       bounding_boxes=get_xyxy(input_image,image_height,image_width, detections,w,h)
-      #date = datetime.now().strftime("%Y_%m_%d_%I_%M_%S_%p")
-      #im_name=f"ch_{date}.jpg"
-      #print(im_name)
-      #cv2.imwrite(im_name,image_with_bounding_boxes)
-     # cv2.imwrite('x1.jpg',image_with_bounding_boxes)
+
       return bounding_boxes
 
 def rearange_(array_pred,results_cls_id):
@@ -146,11 +134,9 @@ def main_func(img):
       t1=time.time()
       img = np.array(img) 
       im2=img.copy()
-      
-      #send_im_2_tg(img)
-      #cv2.imwrite(f"inp.jpg",img)
+
       width_height_diff=img.shape[1]-img.shape[0] #padding
-      #print(width_height_diff,img.shape)
+
       if width_height_diff>0:
             img = cv2.copyMakeBorder(img, 0, width_height_diff, 0, 0, cv2.BORDER_CONSTANT, (0,0,0))
       if width_height_diff<0:
