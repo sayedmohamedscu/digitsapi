@@ -1,0 +1,10 @@
+numpy
+fastapi
+pydantic
+matplotlib
+opencv-python
+DateTime
+requests
+Pillow
+scipy
+uvicorn
