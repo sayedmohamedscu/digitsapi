@@ -53,7 +53,7 @@ async def get_predictionbase64(d:Input):
 			converted_img = converted_img[:, :, ::-1].copy()
 			#converted_img=QR_helper.resizing_without_distortion_module(converted_img)
 			# converted_img=cv2.resize(converted_img,(512,512))
-			results=argentina.main_func(converted_img)
+			results=digits.main_func(converted_img)
 		#results=np.asarray(results)
 		
 
