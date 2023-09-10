@@ -5,7 +5,7 @@ import numpy as np
 import cv2
 import io, json
 import base64
-import argentina
+import digits
 import base64
 import img_checker
 import time
